@@ -34,8 +34,9 @@ public class MongoDB {
 		  MongoClient mongoClient;
 		  mongoClient = new MongoClient(new ServerAddress(DB_HOST, DB_PORT), mongoOptions);
 		  mongoClient.setWriteConcern(WriteConcern.SAFE);
-		  datastore = new Morphia().mapPackage(BaseEntity.class.getPackage().getName())
-					.createDatastore(mongoClient, DB_NAME);
+		  datastore = new Morphia()
+				  .mapPackage(BaseEntity.class.getPackage().getName())
+				  .createDatastore(mongoClient, DB_NAME);
 		  datastore.ensureIndexes();
 		  datastore.ensureCaps();
 		  LOG.info("Connection to database '" + DB_HOST + ":" + DB_PORT + "/" + DB_NAME + "' initialized");

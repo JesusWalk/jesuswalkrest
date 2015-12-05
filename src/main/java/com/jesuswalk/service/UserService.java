@@ -1,5 +1,7 @@
 package com.jesuswalk.service;
 
+import java.util.List;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -30,11 +32,11 @@ public class UserService {
 	
 	@GET
 	@Produces("application/json")
-	public Response retrieveUsers(ObjectId id) {
+	public Response retrieveUsers() {
 		
-		UserEntity user = controller.retrieve(id);
+		List<UserEntity> users = controller.retrieveAll();
 		
-		return Response.status(Response.Status.OK).entity(user).build();
+		return Response.status(Response.Status.OK).entity(users).build();
 	}
 
 }

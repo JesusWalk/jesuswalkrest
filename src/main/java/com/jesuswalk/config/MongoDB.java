@@ -32,8 +32,8 @@ public class MongoDB {
 		 InitializeMongo();
 	}
 
-	private void InitializeMongo() throws MongoException {
-		
+	private void InitializeMongo() {
+		try {
 		MongoClientOptions mongoOptions = MongoClientOptions.builder()
 					.socketTimeout(60000) // Wait 1m for a query to finish, https://jira.mongodb.org/browse/JAVA-1076
 					.connectTimeout(15000) // Try the initial connection for 15s, http://blog.mongolab.com/2013/10/do-you-want-a-timeout/
@@ -48,6 +48,10 @@ public class MongoDB {
 				  .createDatastore(mongoClient, DB_NAME);
 		  datastore.ensureIndexes();
 		  datastore.ensureCaps();
+		} catch (MongoException ex) {
+			System.out.println(ex.getMessage());
+			System.out.println(ex.getStackTrace());
+		}
 		 
 		  LOG.info("Connection to database '" + DB_HOST + ":" + DB_PORT + "/" + DB_NAME + "' initialized");
 	}

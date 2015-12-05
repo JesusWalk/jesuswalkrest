@@ -17,12 +17,12 @@ import com.mongodb.WriteConcern;
 
 public class MongoDB {
 
-	public static final String DB_HOST = System.getenv("OPENSHIFT_MONGO_DB_HOST");
-	public static final int DB_PORT = Integer.parseInt(System.getenv("OPENSHIFT_MONGO_DB_PORT"));
+	public static final String DB_HOST = System.getenv("OPENSHIFT_MONGODB_DB_HOST");
+	public static final int DB_PORT = Integer.parseInt(System.getenv("OPENSHIFT_MONGODB_DB_PORT"));
 	public static final String DB_NAME = "jesuswalkrest";
 
-	public String DB_USER = System.getenv("OPENSHIFT_MONGO_DB_USERNAME");
-	public String DB_PASSWORD = System.getenv("OPENSHIFT_MONGO_DB_PASSWORD");
+	public String DB_USER = System.getenv("OPENSHIFT_MONGODB_DB_USERNAME");
+	public String DB_PASSWORD = System.getenv("OPENSHIFT_MONGODB_DB_PASSWORD");
 	
 	private static final Logger LOG = Logger.getLogger(MongoDB.class.getName());
 

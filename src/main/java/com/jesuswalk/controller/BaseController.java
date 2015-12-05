@@ -53,26 +53,4 @@ public class BaseController<T extends BaseEntity> implements BaseRepository<T> {
 		// TODO Auto-generated method stub
 		
 	}
-
-	/*public <E extends BaseEntity> ObjectId persist(E entity) {
-		datastore.save(entity);
-		return entity.getId();
-	}
-
-	public <E extends BaseEntity> long count(Class<E> clazz) {
-		if (clazz == null) {
-			return 0;
-		}
-
-		return datastore.find(clazz).countAll();
-	}
-
-	public <E extends BaseEntity> E get(Class<E> clazz, final ObjectId id) {
-		if ((clazz == null) || (id == null)) {
-			return null;
-		}
-
-		return datastore.find(clazz).field("id").equal(id).get();
-	}*/
-
 }

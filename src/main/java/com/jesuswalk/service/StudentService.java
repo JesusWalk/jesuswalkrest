@@ -11,32 +11,31 @@ import javax.ws.rs.core.Response;
 
 import org.bson.types.ObjectId;
 
-import com.jesuswalk.controller.UserController;
-import com.jesuswalk.entity.UserEntity;
+import com.jesuswalk.controller.StudentController;
+import com.jesuswalk.entity.StudentEntity;
 
-
-@Path("/users")
-public class UserService {
+@Path("/students")
+public class StudentService {
 	
-	UserController controller = new UserController();
+	StudentController controller = new StudentController();
 	
 	@POST
 	@Consumes("application/json")
 	@Produces("application/json")
-	public Response createUser(UserEntity user) {
+	public Response createStudent(StudentEntity student) {
 		
-		ObjectId id = controller.create(user);
+		ObjectId id = controller.create(student);
 		
 		return Response.status(Response.Status.OK).entity(id).build();
 	}
 	
 	@GET
 	@Produces("application/json")
-	public Response retrieveUsers() {
+	public Response retrieveStudents() {
 		
-		List<UserEntity> users = controller.retrieveAll();
+		List<StudentEntity> students = controller.retrieveAll();
 		
-		return Response.status(Response.Status.OK).entity(users).build();
+		return Response.status(Response.Status.OK).entity(students).build();
 	}
 
 }

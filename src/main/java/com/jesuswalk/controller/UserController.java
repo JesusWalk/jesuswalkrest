@@ -2,7 +2,8 @@ package com.jesuswalk.controller;
 
 import java.util.List;
 
-import com.jesuswalk.entity.ChurchEntity;
+import org.mongodb.morphia.query.Query;
+
 import com.jesuswalk.entity.UserEntity;
 import com.jesuswalk.repository.UserRepository;
 
@@ -13,31 +14,49 @@ public class UserController<T extends UserEntity> extends BaseController<T> impl
 	public UserController(Class<T> type) {
 		super(type);
 		this.type = type;
-		// TODO Auto-generated constructor stub
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public List<T> retrieveByFirstName(String firstName) {
-		// TODO Auto-generated method stub
-		return null;
+
+		Query q = datastore.createQuery(type).filter("firstName", firstName);
+		if(q == null)
+			return null;
+		
+		return q.asList();
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public List<T> retrieveByLastName(String lastName) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Query q = datastore.createQuery(type).filter("lastName", lastName);
+		if(q == null)
+			return null;
+		
+		return q.asList();
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public List<T> retrieveByAge(int age) {
-		// TODO Auto-generated method stub
-		return null;
+		Query q = datastore.createQuery(type).filter("age", age);
+		if(q == null)
+			return null;
+		
+		return q.asList();
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
-	public List<T> retrieveByChurch(ChurchEntity church) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<T> retrieveByChurch(String churchId) {
+		
+		Query q = datastore.createQuery(type).filter("church", churchId);
+		if(q == null)
+			return null;
+		
+		return q.asList();
 	}
 
 }

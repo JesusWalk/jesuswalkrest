@@ -10,7 +10,7 @@ import org.mongodb.morphia.annotations.Version;
 public abstract class BaseEntity {
 
 	@Id
-	protected ObjectId id;
+	protected String id = new ObjectId().toHexString();
 
 	protected Date creationDate;
 	protected Date lastUpdated;
@@ -22,11 +22,11 @@ public abstract class BaseEntity {
 		super();
 	}
 
-	public ObjectId getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(ObjectId id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

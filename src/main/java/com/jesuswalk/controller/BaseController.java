@@ -2,17 +2,17 @@ package com.jesuswalk.controller;
 
 import java.util.List;
 
-import org.bson.types.ObjectId;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.query.Query;
 
 import com.jesuswalk.config.MongoDB;
 import com.jesuswalk.entity.BaseEntity;
 import com.jesuswalk.repository.BaseRepository;
+import com.mongodb.client.result.UpdateResult;
 
 public class BaseController<T extends BaseEntity> implements BaseRepository<T> {
 
-	private final Datastore datastore;
+	protected final Datastore datastore;
 
 	Class<T> type;
 	
@@ -22,13 +22,13 @@ public class BaseController<T extends BaseEntity> implements BaseRepository<T> {
 	}
 
 	@Override
-	public ObjectId create(T entity) {
+	public String create(T entity) {
 		datastore.save(entity);
 		return entity.getId();
 	}
 
 	@Override
-	public T retrieve(ObjectId id) {
+	public T retrieve(String id) {
 		// TODO Auto-generated method stub
 		 return datastore.find(type).field("id").equal(id).get();
 	}
@@ -43,14 +43,16 @@ public class BaseController<T extends BaseEntity> implements BaseRepository<T> {
 	}
 
 	@Override
-	public void update(T entity) {
-		// TODO Auto-generated method stub
+	public UpdateResult update(T entity) {
+		//datastore.up
 		
+		return null;
 	}
 
 	@Override
 	public void delete(T entity) {
 		// TODO Auto-generated method stub
+		datastore.delete(entity);
 		
 	}
 }

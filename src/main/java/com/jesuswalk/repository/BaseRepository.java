@@ -2,16 +2,15 @@ package com.jesuswalk.repository;
 
 import java.util.List;
 
-import org.bson.types.ObjectId;
-
 import com.jesuswalk.entity.BaseEntity;
+import com.mongodb.client.result.UpdateResult;
 
 public interface BaseRepository<T extends BaseEntity> {
 
-	ObjectId create(T entity);
-	T retrieve(ObjectId id);
+	String create(T entity);
+	T retrieve(String id);
 	List<T> retrieveAll();
-	void update(T entity);
+	UpdateResult update(T entity);
 	void delete(T entity);
 	
 }

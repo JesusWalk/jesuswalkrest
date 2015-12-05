@@ -5,7 +5,6 @@ import org.mongodb.morphia.annotations.Embedded;
 @Embedded
 public class Profile {
 
-	private String shirtSize;
 	private String homeNumber;
 	private String cellNumber;
 	private String email;
@@ -14,13 +13,6 @@ public class Profile {
 	private String snapchat;
 	private String twitter;
 	
-	
-	public String getShirtSize() {
-		return shirtSize;
-	}
-	public void setShirtSize(String shirtSize) {
-		this.shirtSize = shirtSize;
-	}
 	public String getHomeNumber() {
 		return homeNumber;
 	}

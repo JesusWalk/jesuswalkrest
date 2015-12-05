@@ -2,6 +2,8 @@ package com.jesuswalk.config;
 
 import java.util.logging.Logger;
 
+import javax.annotation.Resource;
+
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Morphia;
 
@@ -13,6 +15,7 @@ import com.mongodb.ReadPreference;
 import com.mongodb.ServerAddress;
 import com.mongodb.WriteConcern;
 
+@Resource
 public class MongoDB {
 
 	public static final String DB_HOST = System.getenv("OPENSHIFT_MONGODB_HOST");

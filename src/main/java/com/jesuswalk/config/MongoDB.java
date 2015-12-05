@@ -8,6 +8,7 @@ import org.mongodb.morphia.Morphia;
 import com.jesuswalk.entity.BaseEntity;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientOptions;
+import com.mongodb.MongoException;
 import com.mongodb.ReadPreference;
 import com.mongodb.ServerAddress;
 import com.mongodb.WriteConcern;
@@ -22,10 +23,15 @@ public class MongoDB {
 
 	private static final MongoDB INSTANCE = new MongoDB();
 
-	private final Datastore datastore;
+	private Datastore datastore;
 	
 	private MongoDB() {
-		  MongoClientOptions mongoOptions = MongoClientOptions.builder()
+		 InitializeMongo();
+	}
+
+	private void InitializeMongo() throws MongoException {
+		
+		MongoClientOptions mongoOptions = MongoClientOptions.builder()
 					.socketTimeout(60000) // Wait 1m for a query to finish, https://jira.mongodb.org/browse/JAVA-1076
 					.connectTimeout(15000) // Try the initial connection for 15s, http://blog.mongolab.com/2013/10/do-you-want-a-timeout/
 					.maxConnectionIdleTime(600000) // Keep idle connections for 10m, so we discard failed connections quickly
@@ -39,9 +45,11 @@ public class MongoDB {
 				  .createDatastore(mongoClient, DB_NAME);
 		  datastore.ensureIndexes();
 		  datastore.ensureCaps();
+		 
 		  LOG.info("Connection to database '" + DB_HOST + ":" + DB_PORT + "/" + DB_NAME + "' initialized");
 	}
-
+	
+	
 	public static MongoDB instance() {
 		return INSTANCE;
 	}

@@ -106,6 +106,8 @@
 						<configuration>
 							<outputDirectory>webapps</outputDirectory>
 							<warName>ROOT</warName>
+							<debug>true</debug>
+							<debugLevel>lines,vars,source</debugLevel>
 						</configuration>
 					</plugin>
 					<plugin>

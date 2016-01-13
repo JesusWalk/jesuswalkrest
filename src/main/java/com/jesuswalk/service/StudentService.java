@@ -96,5 +96,15 @@ public class StudentService {
 		
 		return Response.status(Response.Status.OK).entity(students).build();
 	}
+	
+	@GET
+	@Path("/groupName/{groupName}")
+	@Produces("application/json")
+	public Response retrieveStudentByGroupName(@PathParam("groupName") String groupName) {
+		
+		List<StudentEntity> students = controller.retrieveByGroupName(groupName);
+		
+		return Response.status(Response.Status.OK).entity(students).build();
+	}
 
 }

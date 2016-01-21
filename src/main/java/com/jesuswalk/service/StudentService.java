@@ -12,9 +12,11 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
+import com.jesuswalk.authentication.Secured;
 import com.jesuswalk.controller.StudentController;
 import com.jesuswalk.entity.StudentEntity;
 
+@Secured
 @Path("/students")
 public class StudentService {
 	

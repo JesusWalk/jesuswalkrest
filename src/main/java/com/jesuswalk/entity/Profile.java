@@ -6,8 +6,7 @@ import org.mongodb.morphia.annotations.Embedded;
 public class Profile {
 
 	private String homeNumber;
-	private String cellNumber;
-	private String email;
+	private String cellNumber;	
 	
 	private String instagram;
 	private String snapchat;
@@ -24,12 +23,6 @@ public class Profile {
 	}
 	public void setCellNumber(String cellNumber) {
 		this.cellNumber = cellNumber;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
 	}
 	public String getInstagram() {
 		return instagram;

@@ -5,7 +5,7 @@ import java.util.Date;
 import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Reference;
 
-public class UserEntity extends BaseEntity {
+public abstract class UserEntity extends BaseEntity {
 
 	protected String firstName;
 	protected String lastName;

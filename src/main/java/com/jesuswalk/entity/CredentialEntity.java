@@ -1,16 +1,15 @@
 package com.jesuswalk.entity;
 
 import org.mongodb.morphia.annotations.Entity;
-import org.mongodb.morphia.annotations.Reference;
 
 @Entity("Credential")
 public class CredentialEntity extends BaseEntity {
 
 	private String email;
 	private String password;
-	
-	@Reference
-	private UserEntity user;
+	private String type;
+		
+	private String userId;
 	
 	public String getEmail() {
 		return email;
@@ -24,11 +23,17 @@ public class CredentialEntity extends BaseEntity {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public UserEntity getUser() {
-		return user;
+	public String getType() {
+		return type;
 	}
-	public void setUser(UserEntity user) {
-		this.user = user;
+	public void setType(String type) {
+		this.type = type;
+	}
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 	
 }

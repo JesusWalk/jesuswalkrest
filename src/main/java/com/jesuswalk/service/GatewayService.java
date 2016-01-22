@@ -54,7 +54,7 @@ public class GatewayService {
 			return Response.status(Response.Status.UNAUTHORIZED).build();
 
 		Token token = new Token();
-		StudentEntity student = authenticate(credentials.getEmail(), credentials.getPassword());
+		StudentEntity student = authenticate(credentials);
 
 		if (student == null)
 			return Response.status(Response.Status.UNAUTHORIZED).build();
@@ -63,17 +63,14 @@ public class GatewayService {
 		return Response.ok(token).build();
 	}
 
-	private StudentEntity authenticate(String email, String password) {
-		CredentialEntity credentials = credentialController.retrieveCredentialsByEmail(email);
-		StudentEntity student;
-		if (credentials.getPassword() == password) {
-
-			student = (StudentEntity) credentials.getUser();
-			return student;
-		}
+	private StudentEntity authenticate(CredentialEntity input) {
+		CredentialEntity credentials = credentialController.retrieveCredentialsByEmail(input.getEmail());
+		StudentEntity student = null;
 		
-		return null;
-
+		if (credentials.getPassword() == input.getPassword()) 
+			student = studentController.retrieve(credentials.getUserId());
+		
+		return student;
 	}
 
 	private Token issueToken(String userId) {

@@ -51,13 +51,13 @@ public class GatewayService {
 	public Response login(CredentialEntity credentials) {
 
 		if (credentials == null)
-			return Response.status(Response.Status.UNAUTHORIZED).build();
+			return Response.status(Response.Status.NO_CONTENT).build();
 
 		Token token = new Token();
 		StudentEntity student = authenticate(credentials);
 
 		if (student == null)
-			return Response.status(Response.Status.UNAUTHORIZED).build();
+			return Response.status(Response.Status.NOT_ACCEPTABLE).build();
 
 		token = issueToken(student.getId());
 		return Response.ok(token).build();

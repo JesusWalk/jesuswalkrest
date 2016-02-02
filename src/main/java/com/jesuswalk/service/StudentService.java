@@ -16,7 +16,7 @@ import com.jesuswalk.authentication.Secured;
 import com.jesuswalk.controller.StudentController;
 import com.jesuswalk.entity.StudentEntity;
 
-@Secured
+//@Secured
 @Path("/students")
 public class StudentService {
 	

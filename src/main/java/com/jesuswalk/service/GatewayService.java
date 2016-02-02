@@ -67,7 +67,7 @@ public class GatewayService {
 		CredentialEntity credentials = credentialController.retrieveCredentialsByEmail(input.getEmail());
 		StudentEntity student = null;
 		
-		if (credentials.getPassword() == input.getPassword()) 
+		if (credentials.getPassword().equals(input.getPassword())) 
 			student = studentController.retrieve(credentials.getUserId());
 		
 		return student;

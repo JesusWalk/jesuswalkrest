@@ -16,7 +16,6 @@ import com.jesuswalk.authentication.Secured;
 import com.jesuswalk.controller.StudentController;
 import com.jesuswalk.entity.StudentEntity;
 
-//@Secured
 @Path("/students")
 public class StudentService {
 	
@@ -33,6 +32,7 @@ public class StudentService {
 	}
 	
 	@GET
+	@Secured 
 	@Produces("application/json")
 	public Response retrieveStudents() {
 		
@@ -51,6 +51,7 @@ public class StudentService {
 	}
 	
 	@DELETE
+	@Secured 
 	@Consumes("application/json")
 	public Response deleteStudent(StudentEntity student) {
 		
@@ -60,6 +61,7 @@ public class StudentService {
 	}
 	
 	@GET
+	@Secured 
 	@Path("/firstName/{firstName}")
 	@Produces("application/json")
 	public Response retrieveStudentByFirstName(@PathParam("firstName") String firstName) {
@@ -70,6 +72,7 @@ public class StudentService {
 	}
 	
 	@GET
+	@Secured 
 	@Path("/lastName/{lastName}")
 	@Produces("application/json")
 	public Response retrieveStudentByLastName(@PathParam("lastName") String lastName) {
@@ -80,6 +83,7 @@ public class StudentService {
 	}
 	
 	@GET
+	@Secured 
 	@Path("/age/{age}")
 	@Produces("application/json")
 	public Response retrieveStudentByAge(@PathParam("age") String age) {
@@ -90,6 +94,7 @@ public class StudentService {
 	}
 	
 	@GET
+	@Secured 
 	@Path("/churchId/{churchId}")
 	@Produces("application/json")
 	public Response retrieveStudentByChurch(@PathParam("churchId") String churchId) {
@@ -100,6 +105,7 @@ public class StudentService {
 	}
 	
 	@GET
+	@Secured 
 	@Path("/groupName/{groupName}")
 	@Produces("application/json")
 	public Response retrieveStudentByGroupName(@PathParam("groupName") String groupName) {

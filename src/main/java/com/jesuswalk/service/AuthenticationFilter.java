@@ -20,7 +20,7 @@ import com.jesuswalk.authentication.Secured;
 import com.jesuswalk.controller.TokenController;
 import com.jesuswalk.entity.Token;
 
-//@Secured 
+@Secured 
 @Provider
 @Priority(Priorities.AUTHENTICATION)
 public class AuthenticationFilter implements ContainerRequestFilter {

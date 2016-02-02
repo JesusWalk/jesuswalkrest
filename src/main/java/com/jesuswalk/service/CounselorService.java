@@ -11,6 +11,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
+
+import com.jesuswalk.authentication.Secured;
 import com.jesuswalk.controller.CounselorController;
 import com.jesuswalk.entity.CounselorEntity;
 
@@ -30,6 +32,7 @@ public class CounselorService {
 	}
 	
 	@GET
+	@Secured 
 	@Produces("application/json")
 	public Response retrieveCounselors() {
 		
@@ -48,6 +51,7 @@ public class CounselorService {
 	}
 	
 	@DELETE
+	@Secured 
 	@Consumes("application/json")
 	public Response deleteCounselor(CounselorEntity counselor) {
 		
@@ -57,6 +61,7 @@ public class CounselorService {
 	}
 	
 	@GET
+	@Secured 
 	@Path("/firstName/{firstName}")
 	@Produces("application/json")
 	public Response retrieveCounselorByFirstName(@PathParam("firstName") String firstName) {
@@ -67,6 +72,7 @@ public class CounselorService {
 	}
 	
 	@GET
+	@Secured 
 	@Path("/lastName/{lastName}")
 	@Produces("application/json")
 	public Response retrieveCounselorByLastName(@PathParam("lastName") String lastName) {
@@ -77,6 +83,7 @@ public class CounselorService {
 	}
 	
 	@GET
+	@Secured 
 	@Path("/age/{age}")
 	@Produces("application/json")
 	public Response retrieveCounselorByAge(@PathParam("age") String age) {
@@ -87,6 +94,7 @@ public class CounselorService {
 	}
 	
 	@GET
+	@Secured 
 	@Path("/churchId/{churchId}")
 	@Produces("application/json")
 	public Response retrieveCounselorByChurch(@PathParam("churchId") String churchId) {

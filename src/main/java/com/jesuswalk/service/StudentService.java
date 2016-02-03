@@ -23,7 +23,7 @@ public class StudentService {
 	
 	@POST
 	@Consumes("application/json")
-	@Produces("application/json")
+	@Produces("text/plain")
 	public Response createStudent(StudentEntity student) {
 		
 		String id = controller.create(student);

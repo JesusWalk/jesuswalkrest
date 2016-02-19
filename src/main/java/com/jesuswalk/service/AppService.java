@@ -31,15 +31,18 @@ public class AppService {
 	public Response register(Email email) {	
 		
 		Email email2 = new Email();
-		email2.setEmailFrom("testsendfrom@whatever.com");
-		email2.setMessage("Hello test email");
-		email2.setName("Test Person");
-		email2.setSubject("Test subject");
+		email2.setEmailFrom("manamiokada1005@gmail.com");
+		email2.setMessage("Hello I was wondering if there will be a promo night in the LA area? Thanks");
+		email2.setName("Joe Smith");
+		email2.setSubject("Promo Night");
 		
+		String mailSender = email2.getName();
 		String mailTo = "mokada@jesuswalkyouth.com";
-		String mailFrom = email2.getEmailFrom();
-		String mailSubject = email2.getSubject();
-		String mailContent = email2.getMessage();
+		String mailFrom = "homepage@jesuswalkyouth.com";
+		String mailSubject = mailSender + " left a message on the JW homepage!";
+		String mailContent = "Sender email: " + email2.getEmailFrom() + "\n" 
+						+ "Message subject: " + email2.getSubject() + "\n" 
+						+ "Message content: \n\n" + email2.getMessage();
 		
 		try {
 			Properties properties = new Properties();
